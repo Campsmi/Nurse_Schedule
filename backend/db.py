@@ -1,11 +1,6 @@
-import psycopg2
-import psycopg2.extras
+from sqlalchemy import create_engine, MetaData
 
-def get_connection():
-    return psycopg2.connect(
-        host="localhost",
-        port=5432,
-        database="nursescheduler",
-        user="postgres",
-        password="postgres"
-    )
+DATABASE_URL = "sqlite:///./db.sqlite"
+
+engine = create_engine(DATABASE_URL, connect_args={"check_same_thread": False})
+metadata = MetaData()
