@@ -8,7 +8,7 @@ from sqlalchemy.orm import registry, relationship
 class Nurse:
     __tablename__ = "nurses"
 
-    id: int = Column(Integer, primary_key=True)
+    id: int = Column(Integer, primary_key=True, index=True)
     name: str = Column(String)
     current_hours: int = Column(Integer, default=0)
 

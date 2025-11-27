@@ -16,4 +16,16 @@ async def shutdown():
 
 @app.get("/")
 async def root():
-    return {"message": "Nurse Scheduler API is running!"}
+    return {"message": "Nurse Scheduler running!"}
+
+@app.get("/nurses")
+async def get_nurses():
+    query = select(Nurse)
+    rows = await database.fetch_all(query)
+    return rows
+
+@app.get("/shifts")
+async def get_shifts():
+    query = select(Shift)
+    rows = await database.fetch_all(query)
+    return rows
