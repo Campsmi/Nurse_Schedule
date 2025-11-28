@@ -1,31 +1,24 @@
 from dataclasses import dataclass
 from sqlalchemy import Column, Integer, String, ForeignKey
-from sqlalchemy.orm import registry, relationship
+from sqlalchemy.orm import relationship
+from db import Base
 
 
-
-@dataclass
-class Nurse:
+class Nurse(Base):
     __tablename__ = "nurses"
 
-    id: int = Column(Integer, primary_key=True, index=True)
-    name: str = Column(String)
-    current_hours: int = Column(Integer, default=0)
+    id = Column(Integer, primary_key=True, index=True)
+    name = Column(String, nullable=False)
+    current_hours = Column(Integer, default=0)
 
-    shifts: list = relationship("Shift", back_populates="nurse")
-    
-    
-@dataclass 
-class Shift:
+
+class Shift(Base):
     __tablename__ = "shifts"
 
-    id: int = Column(Integer, primary_key=True)
-    day: int = Column(Integer)
-    week_day: str = Column(String)
-    time: str = Column(String)
-    nurse_id: int = Column(Integer, ForeignKey("nurses.id"))
-
-    nurse: Nurse = relationship("Nurse", back_populates="shifts")
+    id = Column(Integer, primary_key=True, index=True)
+    day = Column(Integer, nullable=False)
+    week_day = Column(String, nullable=False)
+    time = Column(String, nullable=False)  # Morning, Afternoon, Night
     
 
 

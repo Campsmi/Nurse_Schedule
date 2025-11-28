@@ -1,31 +1,29 @@
 
-from fastapi import FastAPI
-from db import database  # your Database instance from db.py
-from models import Nurse, Shift, mapper_registry
+from fastapi import FastAPI, Depends, HTTPException
+from sqlalchemy.orm import Session
+from models import Nurse, Shift
 from sqlalchemy import select
+
+import crud, models, schemas
+from db import engine, get_db
+
+models.Base.metadata.create_all(bind=engine)
 
 app = FastAPI()
 
-@app.lifespan("startup")
-async def startup():
-    await database.connect()
-
-@app.lifespan("shutdown")
-async def shutdown():
-    await database.disconnect()
 
 @app.get("/")
 async def root():
-    return {"message": "Nurse Scheduler running!"}
+    return {"message": "Nurse Scheduler API running!"}
 
-@app.get("/nurses")
-async def get_nurses():
-    query = select(Nurse)
-    rows = await database.fetch_all(query)
-    return rows
+@app.get("/nurses", response_model=list[schemas.NurseRead])
+def get_all_nurses(db: Session = Depends(get_db)):
+    return crud.get_all_nurses(db)
 
-@app.get("/shifts")
-async def get_shifts():
-    query = select(Shift)
-    rows = await database.fetch_all(query)
-    return rows
+
+@app.post("/addnurses")
+def create_nurse(nurse: schemas.NurseCreate, db: Session = Depends(get_db)):
+    return crud.create_nurse(db, nurse)
+
+
+    
