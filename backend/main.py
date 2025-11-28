@@ -26,4 +26,10 @@ def create_nurse(nurse: schemas.NurseCreate, db: Session = Depends(get_db)):
     return crud.create_nurse(db, nurse)
 
 
-    
+@app.get("/shifts", response_model=list[schemas.ShiftRead])
+def get_all_shifts(db: Session = Depends(get_db)):
+    return crud.get_all_shifts(db)
+
+@app.post("/addshifts")
+def create_nurse(shift: schemas.NurseCreate, db: Session = Depends(get_db)):
+    return crud.create_shift(db, shift)
