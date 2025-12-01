@@ -22,4 +22,17 @@ class Shift(Base):
     
 
 
+class Assignment(Base):
+    
+    __tablename__ = "assignments"
+    
+    id = Column(Integer, primary_key=True, index=True)
+    nurse_id = Column(Integer, ForeignKey("nurses.id"))
+    shift_id = Column(Integer, ForeignKey("shifts.id"))
+
+    nurse = relationship("Nurse", back_populates="assignments")
+    shift = relationship("Shift", back_populates="assignments")
+    
+
+
     
