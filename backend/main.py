@@ -35,19 +35,19 @@ def create_shift(shift: schemas.ShiftCreate, db: Session = Depends(get_db)):
     return crud.create_shift(db, shift)
 
 
-@app.post("/assignments/", response_model=schemas.Assignment)
+@app.post("/addassignments")
 def create_assignment(assignment: schemas.AssignmentCreate, db: Session = Depends(get_db)):
     return crud.create_assignment(db, assignment.nurse_id, assignment.shift_id)
 
-@app.get("/assignments/", response_model=list[schemas.Assignment])
+@app.get("/assignments")
 def get_assignments(db: Session = Depends(get_db)):
     return crud.get_assignments(db)
 
-@app.get("/assignments/nurse/{nurse_id}", response_model=list[schemas.Assignment])
+@app.get("/assignments/nurse/{nurse_id}")
 def get_assignments_for_nurse(nurse_id: int, db: Session = Depends(get_db)):
     return crud.get_assignments_for_nurse(db, nurse_id)
 
-@app.get("/assignments/shift/{shift_id}", response_model=list[schemas.Assignment])
+@app.get("/assignments/shift/{shift_id}")
 def get_assignments_for_shift(shift_id: int, db: Session = Depends(get_db)):
     return crud.get_assignments_for_shift(db, shift_id)
 

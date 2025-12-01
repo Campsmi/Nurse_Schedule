@@ -12,15 +12,13 @@ class NurseRead(BaseModel):
     name: str
     current_hours: int
 
-    class Config:
-        orm_mode = True  # allows returning ORM objects directly
+    model_config = {"from_attributes": True}
 
 # Input schema for creating a shift
 class ShiftCreate(BaseModel):
     day: int
     week_day: str
     time: str
-    nurse_id: Optional[int] = None
 
 # Output schema for returning a shift
 class ShiftRead(BaseModel):
@@ -28,21 +26,18 @@ class ShiftRead(BaseModel):
     day: int
     week_day: str
     time: str
-    nurse_id: Optional[int]
 
-    class Config:
-        orm_mode = True
+    model_config = {"from_attributes": True}
         
-        
-class AssignmentBase(BaseModel):
+    
+
+class AssignmentCreate(BaseModel):
     nurse_id: int
     shift_id: int
 
-class AssignmentCreate(AssignmentBase):
-    pass
-
-class AssignmentRead(AssignmentBase):
+class AssignmentRead(BaseModel):
     id: int
+    nurse_id: int
+    shift_id: int
 
-    class Config:
-        orm_mode = True
+    model_config = {"from_attributes": True}
