@@ -31,5 +31,26 @@ def get_all_shifts(db: Session = Depends(get_db)):
     return crud.get_all_shifts(db)
 
 @app.post("/addshifts")
-def create_nurse(shift: schemas.NurseCreate, db: Session = Depends(get_db)):
+def create_shift(shift: schemas.ShiftCreate, db: Session = Depends(get_db)):
     return crud.create_shift(db, shift)
+
+
+@app.post("/assignments/", response_model=schemas.Assignment)
+def create_assignment(assignment: schemas.AssignmentCreate, db: Session = Depends(get_db)):
+    return crud.create_assignment(db, assignment.nurse_id, assignment.shift_id)
+
+@app.get("/assignments/", response_model=list[schemas.Assignment])
+def get_assignments(db: Session = Depends(get_db)):
+    return crud.get_assignments(db)
+
+@app.get("/assignments/nurse/{nurse_id}", response_model=list[schemas.Assignment])
+def get_assignments_for_nurse(nurse_id: int, db: Session = Depends(get_db)):
+    return crud.get_assignments_for_nurse(db, nurse_id)
+
+@app.get("/assignments/shift/{shift_id}", response_model=list[schemas.Assignment])
+def get_assignments_for_shift(shift_id: int, db: Session = Depends(get_db)):
+    return crud.get_assignments_for_shift(db, shift_id)
+
+@app.delete("/assignments/{assignment_id}")
+def delete_assignment(assignment_id: int, db: Session = Depends(get_db)):
+    return crud.delete_assignment(db, assignment_id)

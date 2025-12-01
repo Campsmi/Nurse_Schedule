@@ -32,3 +32,17 @@ class ShiftRead(BaseModel):
 
     class Config:
         orm_mode = True
+        
+        
+class AssignmentBase(BaseModel):
+    nurse_id: int
+    shift_id: int
+
+class AssignmentCreate(AssignmentBase):
+    pass
+
+class AssignmentRead(AssignmentBase):
+    id: int
+
+    class Config:
+        orm_mode = True
