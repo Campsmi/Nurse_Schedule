@@ -3,6 +3,7 @@ from fastapi import FastAPI, Depends, HTTPException
 from sqlalchemy.orm import Session
 from models import Nurse, Shift
 from sqlalchemy import select
+from fastapi.middleware.cors import CORSMiddleware
 
 import crud, models, schemas
 from db import engine, get_db
@@ -10,6 +11,21 @@ from db import engine, get_db
 models.Base.metadata.create_all(bind=engine)
 
 app = FastAPI()
+
+
+origins = [
+    "http://localhost:3000",  # Next.js dev server
+]
+
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins = origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
 
 
 @app.get("/")
