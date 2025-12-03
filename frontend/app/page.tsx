@@ -63,31 +63,31 @@ export default function HomePage() {
       {/* Summary cards */}
       <section className="grid gap-4 sm:grid-cols-3">
         <div className="rounded-xl bg-white border border-slate-200 p-6 shadow-sm">
-          <p className="text-xs font-medium text-slate-500">Total nurses</p>
-          <p className="mt-2 text-2xl font-semibold text-slate-900">
+          <p className="text-base font-medium text-slate-500">Total nurses</p>
+          <p className="mt-2 text-3xl font-semibold text-slate-900">
             {totalNurses}
           </p>
-          <p className="mt-1 text-xs text-slate-500">
+          <p className="mt-1 text-base text-slate-500">
             Active nurses in your department
           </p>
         </div>
 
         <div className="rounded-xl bg-white border border-slate-200 p-6 shadow-sm">
-          <p className="text-xs font-medium text-slate-500">Shifts today</p>
-          <p className="mt-2 text-2xl font-semibold text-slate-900">
+          <p className="text-base font-medium text-slate-500">Shifts today</p>
+          <p className="mt-2 text-3xl font-semibold text-slate-900">
             {shiftsToday}
           </p>
-          <p className="mt-1 text-xs text-slate-500">
+          <p className="mt-1 text-base text-slate-500">
             Assigned shifts for today
           </p>
         </div>
 
         <div className="rounded-xl bg-white border border-slate-200 p-6 shadow-sm">
-          <p className="text-xs font-medium text-slate-500">Pending trades</p>
-          <p className="mt-2 text-2xl font-semibold text-slate-900">
+          <p className="text-base font-medium text-slate-500">Pending trades</p>
+          <p className="mt-2 text-3xl font-semibold text-slate-900">
             {pendingTrades}
           </p>
-          <p className="mt-1 text-xs text-slate-500">
+          <p className="mt-1 text-base text-slate-500">
             Waiting for your approval
           </p>
         </div>
@@ -98,19 +98,19 @@ export default function HomePage() {
         {/* Upcoming shifts */}
         <div className="rounded-xl bg-white border border-slate-200 p-4 shadow-sm">
           <div className="flex items-center justify-between mb-3">
-            <h3 className="text-sm font-semibold text-slate-900">
+            <h3 className="text-lg font-semibold text-slate-900">
               Upcoming shifts
             </h3>
             <a
               href="/shifts"
-              className="text-xs text-blue-600 hover:underline"
+              className="text-sm text-blue-600 hover:underline"
             >
               View all
             </a>
           </div>
 
           <div className="overflow-x-auto">
-            <table className="min-w-full text-sm">
+            <table className="min-w-full text-base">
               <thead>
                 <tr className="border-b bg-slate-50">
                   <th className="py-2 pr-4 text-left font-medium text-slate-600">
@@ -132,7 +132,7 @@ export default function HomePage() {
                     </td>
                     <td className="py-2 px-4 text-slate-700">{shift.date}</td>
                     <td className="py-2 px-4">
-                      <span className="inline-flex items-center rounded-full bg-slate-100 px-2 py-0.5 text-xs text-slate-700">
+                      <span className="inline-flex items-center rounded-full bg-slate-100 px-2 py-0.5 text-base text-slate-700">
                         {shift.shift}
                       </span>
                     </td>
@@ -143,7 +143,7 @@ export default function HomePage() {
                   <tr>
                     <td
                       colSpan={3}
-                      className="py-4 text-center text-xs text-slate-400"
+                      className="py-4 text-center text-base text-slate-400"
                     >
                       No upcoming shifts.
                     </td>
@@ -157,12 +157,12 @@ export default function HomePage() {
         {/* Shift trades */}
         <div className="rounded-xl bg-white border border-slate-200 p-4 shadow-sm">
           <div className="flex items-center justify-between mb-3">
-            <h3 className="text-sm font-semibold text-slate-900">
+            <h3 className="text-lg font-semibold text-slate-900">
               Shift trade requests
             </h3>
             <a
               href="/trades"
-              className="text-xs text-blue-600 hover:underline"
+              className="text-sm text-blue-600 hover:underline"
             >
               Manage trades
             </a>
@@ -175,16 +175,16 @@ export default function HomePage() {
                 className="flex items-start justify-between rounded-lg border border-slate-200 px-3 py-2"
               >
                 <div>
-                  <p className="text-sm text-slate-800">
+                  <p className="text-base text-slate-800">
                     {trade.fromNurse} → {trade.toNurse}
                   </p>
-                  <p className="text-xs text-slate-500">
+                  <p className="text-sm text-slate-500">
                     {trade.shiftDate} · {trade.shiftType} shift
                   </p>
                 </div>
                 <span
                   className={
-                    "ml-3 inline-flex items-center rounded-full px-2 py-0.5 text-xs " +
+                    "ml-3 inline-flex items-center rounded-full px-2 py-0.5 text-sm " +
                     (trade.status === "pending"
                       ? "bg-amber-100 text-amber-700"
                       : trade.status === "approved"
@@ -198,7 +198,7 @@ export default function HomePage() {
             ))}
 
             {mockTrades.length === 0 && (
-              <li className="text-xs text-slate-400">
+              <li className="text-sm text-slate-400">
                 No trade requests at the moment.
               </li>
             )}

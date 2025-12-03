@@ -16,17 +16,17 @@ export default function RootLayout({
       <body className="min-h-screen bg-slate-50">
         {/* Top bar */}
         <header className="border-b border-indigo-300 bg-indigo-100">
-          <div className="max-w-6xl mx-auto flex items-center justify-between px-4 py-3">
+          <div className="flex items-center justify-between px-4 py-3">
             <div>
-              <h1 className="text-lg font-semibold text-indigo-900">
+              <h1 className="text-2xl font-semibold text-indigo-900">
                 Nurse Shift Manager
               </h1>
-              <p className="text-xs text-indigo-800 ">
+              <p className="text-base text-indigo-800 ">
                 Department manager dashboard
               </p>
             </div>
 
-            <nav className="flex items-center gap-4 text-sm text-indigo-900">
+            <nav className="flex items-center gap-10 text-base text-indigo-900">
               <a href="/">Home</a>
               <a href="/nurses">Nurses</a>
               <a href="/shifts">Shifts</a>
