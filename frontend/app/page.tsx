@@ -32,22 +32,7 @@ const mockShifts: Shift[] = [
 ];
 
 const mockTrades: TradeRequest[] = [
-  {
-    id: 1,
-    fromNurse: "Alice Johnson",
-    toNurse: "Bob Smith",
-    shiftDate: "2025-12-12",
-    shiftType: "Night",
-    status: "pending",
-  },
-  {
-    id: 2,
-    fromNurse: "Carla Santos",
-    toNurse: "Alice Johnson",
-    shiftDate: "2025-12-13",
-    shiftType: "Day",
-    status: "approved",
-  },
+ 
 ];
 
 export default function HomePage() {

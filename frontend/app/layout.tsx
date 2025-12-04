@@ -19,10 +19,10 @@ export default function RootLayout({
           <div className="flex items-center justify-between px-4 py-3">
             <div>
               <h1 className="text-2xl font-semibold text-indigo-900">
-                Nurse Shift Manager
+                Nurse Manager
               </h1>
               <p className="text-base text-indigo-800 ">
-                Department manager dashboard
+                Department Manager Dashboard
               </p>
             </div>
 
