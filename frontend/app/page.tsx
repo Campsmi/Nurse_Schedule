@@ -20,20 +20,17 @@ type TradeRequest = {
 };
 
 const mockNurses: Nurse[] = [
-  { id: 1, name: "Alice Johnson" },
-  { id: 2, name: "Bob Smith" },
-  { id: 3, name: "Carla Santos" },
+  
 ];
 
 const mockShifts: Shift[] = [
-  { id: 1, nurseName: "Alice Johnson", date: "2025-12-10", shift: "Day" },
-  { id: 2, nurseName: "Bob Smith", date: "2025-12-10", shift: "Night" },
-  { id: 3, nurseName: "Carla Santos", date: "2025-12-11", shift: "Evening" },
+  
 ];
 
 const mockTrades: TradeRequest[] = [
  
 ];
+import Link from "next/link";
 
 export default function HomePage() {
   const totalNurses = mockNurses.length;

@@ -10,7 +10,7 @@ class Nurse(Base):
     name = Column(String, nullable=False)
     current_hours = Column(Integer, default=0)
     
-    assignments = relationship("Assignment", back_populates="nurses")
+    assignments = relationship("Assignment", back_populates="nurse")
 
 
 class Shift(Base):
@@ -21,7 +21,7 @@ class Shift(Base):
     week_day = Column(String, nullable=False)
     time = Column(String, nullable=False)  # Morning, Afternoon, Night
     
-    assignments = relationship("Assignment", back_populates="shifts")
+    assignments = relationship("Assignment", back_populates="shift")
     
 
 

@@ -1,5 +1,6 @@
 import "./globals.css";
 import type { Metadata } from "next";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Nurse Shift Manager",
@@ -27,10 +28,10 @@ export default function RootLayout({
             </div>
 
             <nav className="flex items-center gap-10 text-base text-indigo-900">
-              <a href="/">Home</a>
-              <a href="/nurses">Nurses</a>
-              <a href="/shifts">Shifts</a>
-              <a href="/trades">Shift trades</a>
+              <Link href="/">Home</Link>
+              <Link href="/nurses">Nurses</Link>
+              <Link href="/shifts">Shifts</Link>
+              <Link href="/trades">Shift trades</Link>
             </nav>
           </div>
         </header>

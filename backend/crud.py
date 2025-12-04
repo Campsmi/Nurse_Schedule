@@ -8,7 +8,7 @@ def get_all_nurses(db: Session):
     return db.query(Nurse).all()
 
 def create_nurse(db: Session, nurse: NurseCreate):
-    db_nurse = Nurse(name=nurse.name, current_hours=nurse.current_hours)
+    db_nurse = Nurse(name=nurse.name)
     db.add(db_nurse)
     db.commit()
     db.refresh(db_nurse)

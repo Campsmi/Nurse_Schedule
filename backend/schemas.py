@@ -4,7 +4,7 @@ from typing import Optional
 # Input schema for creating a nurse
 class NurseCreate(BaseModel):
     name: str
-    current_hours: int = 0
+    #current_hours: int = 0
 
 # Output schema for returning a nurse
 class NurseRead(BaseModel):
