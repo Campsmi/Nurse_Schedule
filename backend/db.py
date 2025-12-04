@@ -6,7 +6,6 @@ from sqlalchemy.orm import sessionmaker
 DATABASE_URL = "sqlite:///./db.sqlite"
 
 # Async database connection
-database = Database(DATABASE_URL)
 engine = create_engine(DATABASE_URL, connect_args={"check_same_thread": False})
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 Base = declarative_base()

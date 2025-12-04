@@ -1,4 +1,3 @@
-from dataclasses import dataclass
 from sqlalchemy import Column, Integer, String, ForeignKey
 from sqlalchemy.orm import relationship
 from db import Base
@@ -11,7 +10,7 @@ class Nurse(Base):
     name = Column(String, nullable=False)
     current_hours = Column(Integer, default=0)
     
-    assignments = relationship("Assignment", back_populates="nurse")
+    assignments = relationship("Assignment", back_populates="nurses")
 
 
 class Shift(Base):
@@ -22,7 +21,7 @@ class Shift(Base):
     week_day = Column(String, nullable=False)
     time = Column(String, nullable=False)  # Morning, Afternoon, Night
     
-    assignments = relationship("Assignment", back_populates="shift")
+    assignments = relationship("Assignment", back_populates="shifts")
     
 
 
