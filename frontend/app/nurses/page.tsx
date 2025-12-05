@@ -82,12 +82,20 @@ export default function NursesPage() {
         )}
 
         {/* Add Nurse button */}
-        <div className="mt-4">
+        <div className="mt-4 flex gap-8">
           <Link
             href="/nurses/addnew"
             className="inline-flex items-center rounded-md bg-indigo-600 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-700"
           >
             Add Nurse
+          </Link>
+         {/* Delete Nurse button */}
+        
+          <Link
+            href="/nurses/delete"
+            className="inline-flex items-center rounded-md bg-red-600 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-700"
+          >
+            Delete Nurse
           </Link>
         </div>
       </div>
