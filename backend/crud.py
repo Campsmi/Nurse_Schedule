@@ -1,3 +1,4 @@
+from fastapi import HTTPException
 from sqlalchemy.orm import Session
 from models import *
 from schemas import NurseCreate, ShiftCreate
@@ -16,8 +17,13 @@ def create_nurse(db: Session, nurse: NurseCreate):
 
 def delete_nurse(db: Session, nurse_id: int):
     nurse = db.query(Nurse).filter(Nurse.id == nurse_id).first()
+    if not nurse:
+        raise HTTPException(status_code=404, detail="Nurse not found")
     db.delete(nurse)
     db.commit()
+    return nurse
+
+
     
 
 ########## Shift Functions ################

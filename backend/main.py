@@ -32,6 +32,8 @@ app.add_middleware(
 async def root():
     return {"message": "Nurse Scheduler API running!"}
 
+
+# Nurse API
 @app.get("/nurses", response_model=list[schemas.NurseRead])
 def get_all_nurses(db: Session = Depends(get_db)):
     return crud.get_all_nurses(db)
@@ -41,7 +43,11 @@ def get_all_nurses(db: Session = Depends(get_db)):
 def create_nurse(nurse: schemas.NurseCreate, db: Session = Depends(get_db)):
     return crud.create_nurse(db, nurse)
 
+@app.delete("/nurses/{nurse_id}")
+def delete_nurse(nurse_id: int, db: Session = Depends(get_db)):
+    return crud.delete_nurse(db, nurse_id)
 
+# Shift API
 @app.get("/shifts", response_model=list[schemas.ShiftRead])
 def get_all_shifts(db: Session = Depends(get_db)):
     return crud.get_all_shifts(db)
@@ -51,6 +57,8 @@ def create_shift(shift: schemas.ShiftCreate, db: Session = Depends(get_db)):
     return crud.create_shift(db, shift)
 
 
+
+# Assignment API
 @app.post("/addassignments")
 def create_assignment(assignment: schemas.AssignmentCreate, db: Session = Depends(get_db)):
     return crud.create_assignment(db, assignment.nurse_id, assignment.shift_id)
